@@ -32,6 +32,8 @@ body {
   background-size: 30rem;
   background-repeat: no-repeat;
   background-position: 100% 0%;
+
+  width: 100%;
 }
 
 p {
@@ -42,13 +44,16 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 3rem 2rem;
   position: relative;
+
   background: none;
 }
 
 .navBar--fixed {
   background: color-mix(in srgb, white 80%, transparent 20%);
+
   position: sticky;
   top: 0;
 }
@@ -59,107 +64,90 @@ p {
   align-items: center;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  position: relative;
-}
-
-.nav > ul {
-  list-style: none;
-  display: flex;
-  column-gap: 4rem;
-}
-
-.nav a {
-  text-decoration: none;
-  color: var(--very-dark-blue);
-  font-weight: 500;
-}
-
-.nav a:hover,
-.nav a:active {
-  color: var(--dark-grayish-blue);
-}
-
-.nav,
-.nav ~ button {
+.nav ul {
   display: none;
 }
 
-.menu > img {
+/* .menu > img {
   display: flex;
   justify-content: center;
   align-items: center;
+
   width: 3rem;
   aspect-ratio: 1;
+
   cursor: pointer;
+} */
+
+.menu img ~ button {
+  display: none;
 }
 
-.overlay {
-  width: 100%;
-  height: 100%;
+/* Media Queries */
+@media screen and (min-width: 768px) {
+  .nav ul {
+    list-style: none;
 
-  backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
 
-  position: fixed;
-  left: 0;
-  top: 15%;
-  z-index: 2;
-}
+    column-gap: 5rem;
 
-.modal {
-  background: var(--very-light-gray);
-  width: 90%;
-  border-radius: 2.5%;
-  margin: auto;
-  padding: 2.5rem 0;
+    gap: 2rem;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  list-style: none;
+    position: relative;
+  }
 
-  position: relative;
-  z-index: 2;
-}
+  .nav a {
+    text-decoration: none;
+    color: var(--dark-blue);
+    font-weight: 500;
+  }
 
-.modal > li {
-  padding: 1rem 0;
-}
+  .nav a:hover,
+  .nav a:active {
+    color: var(--dark-grayish-blue);
+  }
 
-.modal > li a {
-  text-decoration: none;
-  color: var(--dark-blue);
-  font-size: 2rem;
-  font-weight: 500;
-  width: fit-content;
-}
+  /* .nav ~ button {
+    display: block;
+  } */
 
-.header,
-.header-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  .menu img {
+    display: none;
+  }
+
+  .menu img ~ button {
+    display: block;
+  }
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
   padding: 0 2rem;
   margin-bottom: 10rem;
 }
 
 .header > img {
-  max-width: 768px;
+  /* max-width: 768px; */
   width: 100%;
 }
 
-.header-text {
+.header-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+.header-text {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
 
   background-image: url('./images/bg-tablet-pattern.svg');
   background-size: 30rem;
@@ -168,7 +156,7 @@ p {
 }
 
 .header-text > h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--dark-blue);
   padding: 2rem 0;
 
@@ -183,14 +171,10 @@ p {
   margin-bottom: 4rem;
 }
 
-/* @media screen and (min-width: 768px) {
-  .header {
-    flex-direction: row-reverse;
-  }
-  .header-text > p {
-    padding-left: 0;
-  }
-} */
+.nav,
+.nav ~ button {
+  display: block;
+}
 
 .btn {
   font-size: 1.5rem;
@@ -226,6 +210,64 @@ p {
   color: color-mix(in srgb, var(--bright-red) 55%, var(--very-dark-blue) 10%);
 }
 
+/* Media Queries */
+@media screen and (min-width: 768px) {
+  .header {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .header-content {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    display: block;
+  }
+
+  .header-text {
+    font-size: 3rem;
+  }
+
+  .header-text > h1,
+  .header-text > p {
+    text-align: left;
+    padding-left: 0;
+  }
+
+  .main {
+    display: flex;
+    column-gap: 10rem;
+  }
+
+  div .manage > .title {
+    background-color: transparent;
+    column-gap: 2rem;
+    /* padding-left: 5rem; */
+  }
+
+  div .manage > .text {
+    padding-left: 7.5rem;
+  }
+
+  .testimonials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .testimonial-content {
+    /* flex-direction: column; */
+  }
+
+  .dots-container,
+  .dot,
+  .dot--active {
+    display: none;
+  }
+}
+
 .main {
   margin-bottom: 4rem;
 }
@@ -245,16 +287,6 @@ p {
   text-align: center;
   padding: 2rem;
 }
-
-/* @media screen and (min-width: 768px) {
-  .menu {
-    display: none;
-  }
-  .nav,
-  .nav ~ button {
-    display: block;
-  }
-} */
 
 .manage {
   padding-top: 2rem;
@@ -291,14 +323,27 @@ p {
   padding: 1rem 2rem;
 }
 
+/* Media Queries */
+@media screen and (min-width: 768px) {
+  .main {
+    display: flex;
+    column-gap: 10rem;
+  }
+
+  div .manage > .title {
+    background-color: transparent;
+    column-gap: 2rem;
+    /* padding-left: 5rem; */
+  }
+
+  div .manage > .text {
+    padding-left: 7.5rem;
+  }
+}
+
 .testimonials {
   text-align: center;
   padding: 3rem 0;
-}
-
-.testimonial-container {
-  display: flex;
-  justify-content: center;
 }
 
 .testimonial__header {
@@ -376,6 +421,26 @@ p {
 
 .dot--active {
   background-color: var(--bright-red);
+}
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+  .testimonials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .testimonial-content {
+    /* flex-direction: column; */
+  }
+
+  .dots-container,
+  .dot,
+  .dot--active {
+    display: none;
+  }
 }
 
 .simplify {
@@ -472,12 +537,20 @@ p {
   color: var(--bright-red);
 }
 
+/* .footer-icons {
+  position: relative;
+  z-index: 0;
+} */
+
 .footer-icons ul {
   display: flex;
   align-items: center;
   list-style-type: none;
   margin-bottom: 2.5rem;
   column-gap: 3rem;
+
+  position: relative;
+  z-index: 0;
 }
 
 .footer ul > li ion-icon {
@@ -493,4 +566,45 @@ p {
   width: 100%;
   margin: auto;
   text-align: center;
+}
+
+/* Modal window */
+
+.overlay {
+  width: 100%;
+  height: 100%;
+
+  backdrop-filter: blur(5px);
+
+  position: fixed;
+  left: 0;
+  top: 10%;
+}
+
+.modal {
+  background: var(--very-light-gray);
+  width: 90%;
+  border-radius: 2.5%;
+  margin: auto;
+  padding: 2.5rem 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+
+  position: relative;
+  top: 5%;
+}
+
+.modal > li {
+  padding: 1rem 0;
+}
+
+.modal > li a {
+  text-decoration: none;
+  color: var(--dark-blue);
+  font-size: 2rem;
+  font-weight: 500;
+  width: fit-content;
 }

@@ -13,23 +13,28 @@ import { useState } from 'react';
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
+    <>
       <NavBar isOpen={isOpen} setIsOpen={setIsOpen}>
         <Logo />
+        <Nav />
         <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
       </NavBar>
-      {/* {isOpen && <Modal />} */}
       <Header />
       <Main />
       <Testimonials />
       <Simplify />
       <Footer />
-    </div>
+    </>
   );
 }
 
 function NavBar({ isOpen, children }) {
-  return <nav className={`navBar ${isOpen ? 'navBar--fixed' : ''}`}>{children}</nav>;
+  return (
+    <nav className={`navBar ${isOpen ? 'navBar--fixed' : ''}`}>
+      {/* <Logo /> */}
+      {children}
+    </nav>
+  );
 }
 
 function Logo() {
@@ -40,32 +45,37 @@ function Logo() {
   );
 }
 
+function Nav() {
+  return (
+    <nav className="nav">
+      <ul>
+        <li>
+          <a href="#pricing">Pricing</a>
+        </li>
+        <li>
+          <a href="#product">Product</a>
+        </li>
+        <li>
+          <a href="#aboutUs">About Us</a>
+        </li>
+        <li>
+          <a href="#careers">Careers</a>
+        </li>
+        <li>
+          <a href="#community">Community</a>
+        </li>
+      </ul>
+    </nav>
+  );
+}
+
 function Menu({ isOpen, setIsOpen }) {
   const handleMenu = () => setIsOpen((open) => !open);
   return (
     <>
-      <nav className="nav">
-        <ul>
-          <li>
-            <a href="#pricing">Pricing</a>
-          </li>
-          <li>
-            <a href="#product">Product</a>
-          </li>
-          <li>
-            <a href="#aboutUs">About Us</a>
-          </li>
-          <li>
-            <a href="#careers">careers</a>
-          </li>
-          <li>
-            <a href="#community">Community</a>
-          </li>
-        </ul>
-        <button className="btn btn--primary">Get Started</button>
-      </nav>
       <div className="menu" onClick={handleMenu}>
         {!isOpen ? <img src={hamburger} alt="nav" /> : <img src={close} alt="nav" />}
+        <button className="btn btn--primary">Get Started</button>
       </div>
       {isOpen && <Modal />}
     </>
@@ -76,12 +86,14 @@ function Header() {
   return (
     <header className="header">
       <img src={illustration} alt="illustration" />
-      <div className="header-text">
-        <h1>Bring everyone together to build better products.</h1>
-        <p>
-          Manage makes it simple for software teams to plan day-to-day tasks while keeping the
-          larger team goals in view.
-        </p>
+      <div className="header-content">
+        <div className="header-text">
+          <h1>Bring everyone together to build better products.</h1>
+          <p>
+            Manage makes it simple for software teams to plan day-to-day tasks while keeping the
+            larger team goals in view.
+          </p>
+        </div>
         <button className="btn btn--primary">Get Started</button>
       </div>
     </header>
@@ -115,15 +127,19 @@ function Modal() {
 function Main() {
   return (
     <main className="main">
-      <h2>What’s different about Manage?</h2>
-      <p>
-        {' '}
-        Manage provides all the functionality your team needs, without the complexity. Our software
-        is tailor-made for modern digital product teams.{' '}
-      </p>
-      {manage.map((el) => (
-        <Manage title={el.title} text={el.text} num={el.num} key={el.num} />
-      ))}
+      <div className="main__head">
+        <h2>What’s different about Manage?</h2>
+        <p>
+          {' '}
+          Manage provides all the functionality your team needs, without the complexity. Our
+          software is tailor-made for modern digital product teams.{' '}
+        </p>
+      </div>
+      <div>
+        {manage.map((el) => (
+          <Manage title={el.title} text={el.text} num={el.num} key={el.num} />
+        ))}
+      </div>
     </main>
   );
 }
@@ -148,19 +164,16 @@ function Testimonials() {
   return (
     <section className="testimonials">
       <h2 className="testimonial__header">What they've said </h2>
-
-      <div className="testimonial-container">
-        {testimonials.map((testimonial, i) => (
-          <Testimonial
-            avatar={testimonial.avatar}
-            author={testimonial.author}
-            testimonial={testimonial.testimonial}
-            key={testimonial.author}
-            num={i}
-            activeTestimonial={activeTestimonial}
-          />
-        ))}
-      </div>
+      {testimonials.map((testimonial, i) => (
+        <Testimonial
+          avatar={testimonial.avatar}
+          author={testimonial.author}
+          testimonial={testimonial.testimonial}
+          key={testimonial.author}
+          num={i}
+          activeTestimonial={activeTestimonial}
+        />
+      ))}
       <div class="dots-container">
         {Array.from({ length: testimonials.length }, (_, i) => (
           <Dot
