@@ -164,16 +164,18 @@ function Testimonials() {
   return (
     <section className="testimonials">
       <h2 className="testimonial__header">What they've said </h2>
-      {testimonials.map((testimonial, i) => (
-        <Testimonial
-          avatar={testimonial.avatar}
-          author={testimonial.author}
-          testimonial={testimonial.testimonial}
-          key={testimonial.author}
-          num={i}
-          activeTestimonial={activeTestimonial}
-        />
-      ))}
+      <div>
+        {testimonials.map((testimonial, i) => (
+          <Testimonial
+            avatar={testimonial.avatar}
+            author={testimonial.author}
+            testimonial={testimonial.testimonial}
+            key={testimonial.author}
+            num={i}
+            activeTestimonial={activeTestimonial}
+          />
+        ))}
+      </div>
       <div class="dots-container">
         {Array.from({ length: testimonials.length }, (_, i) => (
           <Dot
@@ -192,11 +194,11 @@ function Testimonials() {
 function Testimonial({ avatar, author, testimonial, num, activeTestimonial }) {
   return (
     <div
-      className={`testimonial-content ${
+      className={`testimonial-content  ${
         activeTestimonial === num ? 'testimonial-content--active' : ''
       }`}
     >
-      <img src={avatar} alt={author} className="testimonial-content__photo" />
+      <img src={avatar} alt={`${author}`} className="testimonial-content__photo" />
       <h3>{author}</h3>
       <blockquote className="testimonial-content__text">{testimonial}</blockquote>
     </div>
@@ -225,7 +227,12 @@ function Footer() {
   return (
     <footer className="footer">
       <span>
-        <input className="footer__input" type="email" placeholder="Updates in your inbox..." />
+        <input
+          className="footer__input"
+          type="email"
+          placeholder="Updates in your inbox..."
+          required
+        />
 
         <button className="btn btn__footer">Go</button>
       </span>
