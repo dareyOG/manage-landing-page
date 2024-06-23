@@ -224,18 +224,37 @@ function Simplify() {
 }
 
 function Footer() {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
   return (
     <footer className="footer">
-      <span>
-        <input
-          className="footer__input"
-          type="email"
-          placeholder="Updates in your inbox..."
-          required
-        />
-
-        <button className="btn btn__footer">Go</button>
-      </span>
+      <div>
+        <form>
+          <span>
+            <input
+              className="footer__input"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Updates in your inbox..."
+              required
+            />
+            <button
+              className="btn btn__footer"
+              onClick={() => {
+                try {
+                  if (!email) throw new Error('no valid mail');
+                } catch (error) {
+                  setError(error.message);
+                }
+              }}
+            >
+              Go
+            </button>
+          </span>
+          <p className="error">{error}</p>
+        </form>
+      </div>
       <div className="footer__nav">
         <div>
           <a href="#home">Home</a>

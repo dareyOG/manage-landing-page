@@ -455,10 +455,8 @@ a::selection {
 
     position: relative;
     z-index: -2;
-  }
 
-  .testimonial-content:hover {
-    border: 2px dotted red;
+    box-shadow: 0 -1.5rem 1.5rem var(--dark-blue);
   }
 
   .dots-container,
@@ -477,9 +475,8 @@ a::selection {
 }
 
 .simplify h2 {
-  font-size: 2.5rem;
-  max-width: 50%;
-  width: 100%;
+  font-size: 3.5rem;
+  max-width: 100%;
   color: var(--very-light-gray);
   padding: 5rem;
   padding-bottom: 2rem;
@@ -499,6 +496,7 @@ a::selection {
   .simplify h2 {
     font-size: 4rem;
     text-align: left;
+    width: 50%;
   }
 
   .simplify .btn {
@@ -551,6 +549,15 @@ a::selection {
   background-color: var(--bright-red);
   color: var(--very-light-gray);
   /* padding: 1.5rem; */
+}
+
+.error {
+  color: var(--bright-red);
+  width: fit-content;
+  padding-left: 2rem;
+  font-style: oblique;
+
+  display: flex;
 }
 
 .footer__nav {
