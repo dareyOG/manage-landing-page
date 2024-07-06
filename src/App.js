@@ -15,9 +15,7 @@ export default function App() {
   return (
     <>
       <NavBar isOpen={isOpen} setIsOpen={setIsOpen}>
-        <Logo />
         <Nav />
-        <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
       </NavBar>
       <Header />
       <Main />
@@ -28,11 +26,12 @@ export default function App() {
   );
 }
 
-function NavBar({ isOpen, children }) {
+function NavBar({ isOpen, setIsOpen, children }) {
   return (
     <nav className={`navBar ${isOpen ? 'navBar--fixed' : ''}`}>
-      {/* <Logo /> */}
+      <Logo />
       {children}
+      <Menu isOpen={isOpen} setIsOpen={setIsOpen} />
     </nav>
   );
 }
@@ -74,9 +73,13 @@ function Menu({ isOpen, setIsOpen }) {
   return (
     <>
       <div className="menu" onClick={handleMenu}>
-        {!isOpen ? <img src={hamburger} alt="nav" /> : <img src={close} alt="nav" />}
-        <button className="btn btn--primary">Get Started</button>
+        {!isOpen ? (
+          <img src={hamburger} alt="nav" className="hamburger" />
+        ) : (
+          <img src={close} alt="nav" className="close" />
+        )}
       </div>
+      <button className="btn btn--primary">Get Started</button>
       {isOpen && <Modal />}
     </>
   );
@@ -100,34 +103,10 @@ function Header() {
   );
 }
 
-function Modal() {
-  return (
-    <section className="overlay">
-      <ul className="modal">
-        <li>
-          <a href="#pricing">Pricing</a>
-        </li>
-        <li>
-          <a href="#product">Product</a>
-        </li>
-        <li>
-          <a href="#aboutUs">About Us</a>
-        </li>
-        <li>
-          <a href="#careers">Careers</a>
-        </li>
-        <li>
-          <a href="#community">Community</a>
-        </li>
-      </ul>
-    </section>
-  );
-}
-
 function Main() {
   return (
     <main className="main">
-      <div className="main__head">
+      <div>
         <h2>What’s different about Manage?</h2>
         <p>
           {' '}
@@ -196,10 +175,10 @@ function Testimonial({ avatar, author, testimonial, num, activeTestimonial }) {
     <div
       className={`testimonial-content  ${
         activeTestimonial === num ? 'testimonial-content--active' : ''
-      }`}
+      } `}
     >
       <img src={avatar} alt={`${author}`} className="testimonial-content__photo" />
-      <h3>{author}</h3>
+      <h3 className="testimonial-content__author">{author}</h3>
       <blockquote className="testimonial-content__text">{testimonial}</blockquote>
     </div>
   );
@@ -228,33 +207,34 @@ function Footer() {
   const [error, setError] = useState('');
   return (
     <footer className="footer">
-      <div>
-        <form>
-          <span>
-            <input
-              className="footer__input"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Updates in your inbox..."
-              required
-            />
-            <button
-              className="btn btn__footer"
-              onClick={() => {
-                try {
-                  if (!email) throw new Error('no valid mail');
-                } catch (error) {
-                  setError(error.message);
-                }
-              }}
-            >
-              Go
-            </button>
-          </span>
-          <p className="error">{error}</p>
-        </form>
-      </div>
+      <form className="form">
+        <span>
+          <input
+            className="form__input"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Updates in your inbox..."
+            required
+          />
+          <button
+            className="btn__submit"
+            onClick={() => {
+              try {
+                if (!email) throw new Error('no valid mail');
+              } catch (error) {
+                setError(error.message);
+              }
+            }}
+          >
+            Go
+          </button>
+        </span>
+        <p className="error">
+          Hello
+          {error}
+        </p>
+      </form>
       <div className="footer__nav">
         <div>
           <a href="#home">Home</a>
@@ -292,5 +272,29 @@ function Footer() {
       </div>
       <p>Copyright 2020. All Rights Reserved</p>
     </footer>
+  );
+}
+
+function Modal() {
+  return (
+    <section className="overlay">
+      <ul className="modal">
+        <li>
+          <a href="#pricing">Pricing</a>
+        </li>
+        <li>
+          <a href="#product">Product</a>
+        </li>
+        <li>
+          <a href="#aboutUs">About Us</a>
+        </li>
+        <li>
+          <a href="#careers">Careers</a>
+        </li>
+        <li>
+          <a href="#community">Community</a>
+        </li>
+      </ul>
+    </section>
   );
 }
