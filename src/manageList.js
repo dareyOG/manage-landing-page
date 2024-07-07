@@ -1,4 +1,4 @@
-export const manage = [
+export const manageList = [
   {
     num: '1',
     title: ' Track company-wide progress',
