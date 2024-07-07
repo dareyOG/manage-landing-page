@@ -106,6 +106,10 @@ a::selection {
 
 /* Media Queries */
 @media screen and (min-width: 1280px) {
+  .navBar {
+    padding: 2rem 4rem;
+  }
+
   .nav,
   .menu ~ .btn {
     display: block;
@@ -191,7 +195,6 @@ a::selection {
   .header-text > p {
     font-size: 2.8rem;
     padding: 0 2rem;
-    /* padding-left: 0; */
   }
 }
 
@@ -199,26 +202,23 @@ a::selection {
   .header {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 15rem;
   }
 
   .header-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: block;
-  }
-
-  .header-content > .header-text {
-    text-align: left;
+    text-align: justify;
   }
 
   .header-text > h1 {
-    font-size: 5rem;
+    font-size: 3rem;
+    padding-top: 0;
+    /* padding-right: 14rem; */
   }
 
   .header-text > p {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     padding-left: 0;
   }
 
@@ -234,7 +234,6 @@ a::selection {
   .manage > .title {
     background-color: transparent;
     column-gap: 2rem;
-    /* padding-left: 5rem; */
   }
 
   .manage > .text {
@@ -317,7 +316,6 @@ a::selection {
 @media screen and (min-width: 768px) {
   .main div > h2 {
     padding: 0 4rem;
-    /* padding-left: 4rem; */
     font-size: 5.5rem;
   }
 
@@ -336,37 +334,37 @@ a::selection {
 @media screen and (min-width: 1280px) {
   .main {
     display: flex;
-    column-gap: 10rem;
+    column-gap: 5rem;
   }
 
   .main > div {
-    text-align: start;
+    /* font-size: 2.5rem; */
   }
 
   .main div > h2 {
-    /* padding: 0; */
-    /* padding-left: 4rem; */
+    text-align: start;
     font-size: 3.5rem;
   }
 
   .main div > p {
-    font-size: 1.8rem;
+    padding: 2rem 4rem 0 4rem;
+    text-align: justify;
+    font-size: 1.2rem;
   }
 
   .manage > .title {
     background-color: transparent;
     column-gap: 2rem;
-    /* padding-left: 5rem; */
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .manage > .text {
     padding-left: 7.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .manage > .title > .num {
-    font-size: 2rem;
+    font-size: 1.5rem;
     border-radius: 45%;
     padding: 0.5rem 1.5rem;
   }
@@ -521,11 +519,11 @@ a::selection {
   }
 
   .testimonial-content:nth-of-type(odd) {
-    box-shadow: 0 -0.25rem 0.125rem 0 var(--dark-blue);
+    box-shadow: 0.5rem 0.5rem 1rem 0.01rem var(--dark-blue);
   }
 
   .testimonial-content:nth-of-type(even) {
-    box-shadow: 0 -0.25rem 0.125rem 0 var(--bright-red);
+    box-shadow: 0.5rem 0.5rem 1rem 0.01rem var(--bright-red);
   }
 
   .testimonial-content__photo {
@@ -631,7 +629,7 @@ a::selection {
 
 .form__input:focus {
   outline: 0;
-  border: 0.5rem solid var(--bright-red);
+  border: 2.5px solid var(--bright-red);
 }
 
 .form__input::placeholder {
@@ -733,6 +731,10 @@ a::selection {
     place-self: start;
   }
 
+  .footer-icons ul {
+    justify-content: flex-start;
+  }
+
   .form {
     display: flex;
     flex-direction: column;
@@ -750,12 +752,8 @@ a::selection {
   }
 
   .form__input {
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     font-size: 1.5rem;
-  }
-
-  .form__input:focus {
-    border: 2.5px solid;
   }
 
   .form .error {
@@ -818,8 +816,8 @@ a::selection {
   color: color-mix(in srgb, var(--bright-red) 55%, var(--very-dark-blue) 10%);
 }
 
-.form_submit {
-  padding: 2rem 1rem;
+.btn__submit {
+  padding: 1.5rem 4rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -831,7 +829,13 @@ a::selection {
 
 @media screen and (min-width: 1280px) {
   .btn {
+    font-size: 1.5rem;
     padding: 1.1rem 1.5rem;
+  }
+
+  .btn__submit {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
   }
 }
 
@@ -844,7 +848,7 @@ a::selection {
 
   position: fixed;
   left: 0;
-  top: 8%;
+  top: 6%;
 }
 
 .modal {
@@ -885,5 +889,23 @@ a::selection {
 
   .modal > li a {
     font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .overlay {
+    top: 15%;
+  }
+
+  .modal {
+    top: 8%;
+  }
+
+  .modal > li {
+    padding: 2rem 0;
+  }
+
+  .modal > li a {
+    font-size: 3rem;
   }
 }

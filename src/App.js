@@ -9,6 +9,9 @@ import { manage } from './manage';
 import { testimonials } from './testimonials';
 
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -203,37 +206,31 @@ function Simplify() {
 }
 
 function Footer() {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+  const schema = yup.object().shape({
+    email: yup.string().email().required('please insert a vaild mail.'),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const onSubmit = (data) => {
+    return data;
+  };
   return (
     <footer className="footer">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <span>
           <input
             className="form__input"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
             placeholder="Updates in your inbox..."
-            required
+            {...register('email')}
           />
-          <button
-            className="btn__submit"
-            onClick={() => {
-              try {
-                if (!email) throw new Error('no valid mail');
-              } catch (error) {
-                setError(error.message);
-              }
-            }}
-          >
-            Go
-          </button>
+          <button className="btn__submit">Go</button>
         </span>
-        <p className="error">
-          Hello
-          {error}
-        </p>
+        <p className="error">{errors.email?.message}</p>
       </form>
       <div className="footer__nav">
         <div>
