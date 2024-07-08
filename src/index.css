@@ -851,7 +851,7 @@ a::selection {
 
   position: fixed;
   left: 0;
-  top: 1%;
+  top: 0;
 }
 
 .modal {
