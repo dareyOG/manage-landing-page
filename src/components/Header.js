@@ -1,4 +1,4 @@
-import illustration from './images/illustration-intro.svg';
+import illustration from '../images/illustration-intro.svg';
 
 export function Header() {
   return (

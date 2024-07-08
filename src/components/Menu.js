@@ -1,5 +1,5 @@
-import hamburger from './images/icon-hamburger.svg';
-import close from './images/icon-close.svg';
+import hamburger from '../images/icon-hamburger.svg';
+import close from '../images/icon-close.svg';
 import { Modal } from './Modal';
 
 export function Menu({ isOpen, setIsOpen }) {

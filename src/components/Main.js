@@ -1,4 +1,4 @@
-import { manage } from '../manageList';
+import { manageList } from '../manageList';
 import { Manage } from './Manage';
 
 export function Main() {
@@ -13,8 +13,8 @@ export function Main() {
         </p>
       </div>
       <div>
-        {manage.map((el) => (
-          <Manage title={el.title} text={el.text} num={el.num} key={el.num} />
+        {manageList.map((manage) => (
+          <Manage title={manage.title} text={manage.text} num={manage.num} key={manage.num} />
         ))}
       </div>
     </main>

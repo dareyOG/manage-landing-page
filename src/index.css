@@ -610,6 +610,12 @@ a::selection {
   margin: auto;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .form span {
   display: flex;
   gap: 2rem;
@@ -629,7 +635,7 @@ a::selection {
 
 .form__input:focus {
   outline: 0;
-  border: 2.5px solid var(--bright-red);
+  border: 1px solid var(--bright-red);
 }
 
 .form__input::placeholder {
@@ -647,13 +653,12 @@ a::selection {
 
 .form > .error {
   color: var(--bright-red);
-  /* padding: 2rem 0 0 3rem; */
-  font-style: italic;
-  font-size: 2rem;
-  justify-content: left;
-  padding-left: 2rem;
-  padding-top: 0.5rem;
-  /* text-align: left; */
+  padding-top: 0;
+  font-size: 1rem;
+  display: flex;
+  place-self: start;
+  margin: 0;
+  padding-left: 4rem;
 }
 
 .footer__nav {
@@ -688,7 +693,7 @@ a::selection {
   justify-content: center;
   list-style-type: none;
   /* margin-bottom: 4rem; */
-  column-gap: 3rem;
+  column-gap: 2.5rem;
 
   position: relative;
   z-index: 0;
@@ -696,6 +701,7 @@ a::selection {
 
 .footer ul > li ion-icon {
   color: var(--very-light-gray);
+  width: 1.5rem;
 }
 
 .footer ul > li ion-icon:hover {
@@ -711,8 +717,7 @@ a::selection {
   justify-content: center;
   align-items: center;
 
-  width: 100%;
-  font-size: 1.5rem;
+  font-size: 0.5rem;
   margin: auto;
   padding-top: 3rem;
 }
@@ -722,7 +727,8 @@ a::selection {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    padding: 5rem 10rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
   }
 
   .footer-logo {
@@ -738,10 +744,8 @@ a::selection {
   .form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     place-self: start end;
-    gap: 0;
+    gap: 1rem;
   }
 
   .form span {
@@ -756,8 +760,11 @@ a::selection {
     font-size: 1.5rem;
   }
 
-  .form .error {
-    font-size: 1rem;
+  .form > .error {
+    display: flex;
+    place-self: start start;
+    margin: 0;
+    padding-left: 2rem;
   }
 
   .footer__nav {
@@ -781,16 +788,12 @@ a::selection {
   font-size: 3rem;
   font-weight: 600;
 
-  border: 0.1rem solid transparent;
+  border: 1px solid transparent;
   border-radius: 5rem;
   padding: 3rem 5rem;
 
   cursor: pointer;
   transition: all ease-out 500ms;
-}
-
-.btn:focus {
-  outline: 0.5rem solid transparent;
 }
 
 .btn--primary {
