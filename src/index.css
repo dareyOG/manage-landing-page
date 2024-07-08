@@ -519,11 +519,11 @@ a::selection {
   }
 
   .testimonial-content:nth-of-type(odd) {
-    box-shadow: 0.5rem 0.5rem 1rem 0.01rem var(--dark-blue);
+    box-shadow: 0.5rem 0.5rem 0.5rem 0.01rem var(--dark-blue);
   }
 
   .testimonial-content:nth-of-type(even) {
-    box-shadow: 0.5rem 0.5rem 1rem 0.01rem var(--bright-red);
+    box-shadow: 0.5rem 0.5rem 0.5rem 0.01rem var(--bright-red);
   }
 
   .testimonial-content__photo {
