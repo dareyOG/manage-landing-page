@@ -883,7 +883,7 @@ a::selection {
 
 @media screen and (min-width: 768px) {
   .overlay {
-    top: 10%;
+    top: 15%;
   }
 
   .modal > li {
