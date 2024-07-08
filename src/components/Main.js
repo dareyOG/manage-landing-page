@@ -13,8 +13,13 @@ export function Main() {
         </p>
       </div>
       <div>
+<<<<<<< HEAD
         {manageList.map((manage) => (
           <Manage title={manage.title} text={manage.text} num={manage.num} key={manage.num} />
+=======
+        {manageList.map((el) => (
+          <Manage title={el.title} text={el.text} num={el.num} key={el.num} />
+>>>>>>> 8d9dcdaef2e13768bfa9dfcc6b74f4e7cc7a2919
         ))}
       </div>
     </main>
