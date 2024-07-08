@@ -851,7 +851,7 @@ a::selection {
 
   position: fixed;
   left: 0;
-  top: 5%;
+  top: 3%;
 }
 
 .modal {
@@ -867,7 +867,7 @@ a::selection {
   list-style: none;
 
   position: relative;
-  top: 1%;
+  top: 5%;
 }
 
 .modal > li {
